@@ -2,9 +2,9 @@ import {combineReducers} from 'redux';
 import BoxReducer from './boxReducer';
 
 const rootReducer = combineReducers({
-    
-   box: BoxReducer
-    
+
+   food: BoxReducer
+
 });
 
 export default rootReducer;

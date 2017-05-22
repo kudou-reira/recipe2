@@ -10,15 +10,15 @@ export const foodChange = (text) => {
 }
 
 export const ingredientChange = (text) => {
-    
+
     return {
         type: INGR_CHANGE,
         payload: text
     }
-    
+
 }
 
-export const newFood = (text) => {
+export const newFood = (food, ingredients) => {
 
     return {
         type: NEW_FOOD,

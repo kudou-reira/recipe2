@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import IngredientProperties from './list_ingredients';
+import IngredientProperties from './listIngredients';
 import * as ReactBootstrap from 'react-bootstrap';
 import {connect} from 'react-redux';
 import {foodChange, ingredientChange, setFood, setIngr} from '../actions';
