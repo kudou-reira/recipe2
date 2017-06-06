@@ -20,7 +20,7 @@ export default (state = INITIAL_STATE, action) => {
             return {...state, ingredients: action.payload};
       
       case SET_OBJ:
-            return {...state, food: action.payload};
+            return {...state, food: action.payload.food, ingredients: action.payload.ingredients};
             
       default:
         return state;

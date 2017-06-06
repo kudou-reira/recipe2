@@ -19,7 +19,9 @@ class ModalClass extends Component {
     this.state = {
       show: false,
       food,
-      ingredients
+      ingredients,
+      tempFood: '',
+      tempIngr: ''
     }
   }
 
@@ -38,20 +40,17 @@ class ModalClass extends Component {
     
   onFoodChange(e) {
     
-    this.props.foodChange(e);
-    console.log(this.props.food);
+    this.setState({tempFood: e});
   }
     
   onRecipeChange(e) {
     
-    this.props.ingredientChange(e);
-    console.log(this.props.ingredients);
-    
+    this.setState({tempIngr: e});
   }
     
  saveRecipe() {
     
-    const {food, ingredients} = this.props;
+    const {food, ingredients} = this.state;
   
     this.props.setObj({food, ingredients});
     
