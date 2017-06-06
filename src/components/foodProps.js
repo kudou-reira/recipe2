@@ -3,9 +3,9 @@ import ModalClass from './showModal';
 
 const FoodProperties = (props) => {
 
-  const foodItems = props.food.map((item) => {
+  const foodItems = props.food.map((item, index) => {
     return (
-      <li key={item.key} className="list-group-item">
+      <li key={index} className="list-group-item">
         <ModalClass item = {item} />
       </li>
     );
