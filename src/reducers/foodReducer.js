@@ -1,12 +1,8 @@
 import {
   FOOD_CHANGE,
   INGR_CHANGE,
-  NEW_FOOD,
-  NEW_INGR,
-  SET_FOOD,
-  SET_INGR,
-  ADD_FOOD,
-  ADD_INGR
+  SET_OBJ
+
 } from '../actions/types';
 
 import fakeData from '../lib/initialData'
@@ -17,6 +13,15 @@ export default (state = INITIAL_STATE, action) => {
 
     switch(action.type){
       
+      case FOOD_CHANGE:
+            return {...state, food: action.payload};
+    
+      case INGR_CHANGE:
+            return {...state, ingredients: action.payload};
+      
+      case SET_OBJ:
+            return {...state, food: action.payload};
+            
       default:
         return state;
 

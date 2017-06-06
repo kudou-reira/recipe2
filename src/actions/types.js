@@ -1,5 +1,6 @@
 export const FOOD_CHANGE = 'food_change';
 export const INGR_CHANGE = 'ingredient_change';
+export const SET_OBJ = 'set_obj';
 export const NEW_FOOD = 'new_food';
 export const NEW_INGR = 'new_ingr';
 export const SET_FOOD = 'set_food';

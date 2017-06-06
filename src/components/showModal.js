@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import IngredientProperties from './listIngredients';
 import * as ReactBootstrap from 'react-bootstrap';
 import {connect} from 'react-redux';
-import {foodChange, ingredientChange, setFood, setIngr} from '../actions';
+import {foodChange, ingredientChange, setObj} from '../actions';
 //import {Button, Modal} from 'react-bootstrap';
 import Lockr from 'lockr';
 
@@ -51,24 +51,14 @@ class ModalClass extends Component {
     
  saveRecipe() {
     
-    this.setState({food: this.props.food});
-    this.setState({ingredients: this.props.ingredients})
-    
-    this.props.setFood(this.props.food);
-    console.log(this.props.food + " store set");
-     
-    console.log(this.props.ingredients);
-    this.props.setIngr(this.props.ingredients);
+    const {food, ingredients} = this.props;
+  
+    this.props.setObj({food, ingredients});
     
     //this.setState({props.item.food: this.props.food});
     this.closeModal();
   }
     
-  showInitialFood(){
-
-     
-    
-  }
 
   /*
   renderModal() {
@@ -146,11 +136,10 @@ const mapStateToProps = state => {
 
     return {
         
-        food: state.box.food,
-        ingredients: state.box.ingredients
+        food: state.food
         
     };
     
 };
 
-export default connect(mapStateToProps, {foodChange, ingredientChange, setFood, setIngr})(ModalClass);
+export default connect(mapStateToProps, {foodChange, ingredientChange, setObj})(ModalClass);

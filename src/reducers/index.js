@@ -1,9 +1,9 @@
 import {combineReducers} from 'redux';
-import BoxReducer from './boxReducer';
+import FoodReducer from './FoodReducer';
 
 const rootReducer = combineReducers({
 
-   food: BoxReducer
+   food: FoodReducer
 
 });
 
