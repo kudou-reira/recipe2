@@ -9,15 +9,20 @@ const INITIAL_STATE = fakeData
 
 export default (state = INITIAL_STATE, action) => {
 
-    switch(action.type){
-      
-      case SET_OBJ:
-            return [...state, food: action.payload, ingredients: action.payload];
-            
-      default:
-        return state;
+  switch (action.type) {
 
-    }
+    case SET_OBJ:
+      const newFoodItem = {
+        key: state.length + 1,
+        food: action.payload.food,
+        ingredients: action.payload.ingredients
+      }
+      return [...state, newFoodItem];
+
+    default:
+      return state;
+
+  }
 
 
 };
