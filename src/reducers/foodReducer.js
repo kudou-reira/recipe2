@@ -1,7 +1,6 @@
 import {
   SET_NEW_OBJ,
   UPDATE_OBJ
-
 } from '../actions/types';
 
 import fakeData from '../lib/initialData'
@@ -27,6 +26,5 @@ export default (state = INITIAL_STATE, action) => {
         return state;
 
     }
-
 
 };

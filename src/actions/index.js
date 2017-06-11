@@ -16,6 +16,3 @@ export const updateObj = ({food, ingredients}) => {
         payload: {food, ingredients}
     }
 }
-
-
-
