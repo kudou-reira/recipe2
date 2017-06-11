@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import IngredientProperties from './listIngredients';
 import { Button, Modal } from 'react-bootstrap';
 import {connect} from 'react-redux';
-import {newFood, newIngr, addFood, addIngr} from '../actions';
+import {setNewObj} from '../actions';
 //import {Button, Modal} from 'react-bootstrap';
 import Lockr from 'lockr';
 //import RenderModal from './renderModal';
@@ -14,44 +14,37 @@ class NewRecipe extends Component {
     super(props)
     const { modalStatus, key } = props
     this.state = {
-      show: props.show,
+      show: true,
       food: 'Recipe Name',
-      ingredients: 'Enter Ingredients,Separated,By Commas'
+      ingredients: 'Enter Ingredients,Separated,By Commas',
+      tempFood: '',
+      tempIngr: ''
     }
   }
 
-  onNewFood(e) {
+  closeModal() {
+    this.setState({show: false})
+  }
 
-    this.props.newFood(e);
-    console.log(this.props.food);
+  onNewFood(e) {
+    this.setState({tempFood: e});
   }
 
   onNewIngr(e) {
-
-    this.props.newIngr(e);
-    console.log(this.props.ingredients);
-
+    this.setState({tempIngr: e});
   }
 
   saveRecipe() {
 
-    this.setState({food: this.props.food});
-    this.setState({ingredients: this.props.ingredients})
-
-    this.props.addFood(this.props.food, this.props.ingredients);
-    console.log(this.props.food + " food store set");
-
-    this.props.addIngr(this.props.ingredients);
-    console.log(this.props.ingredients + " ingredients store set");
-
-    //this.setState({props.item.food: this.props.food});
-    this.props.displayModal()
+    const {tempFood, tempIngr} = this.state;
+    this.props.setNewObj({tempFood, tempIngr});
+    this.setState({show: false})
   }
 
   render() {
     return(
       <div className="modal-container">
-          <Modal show={true} onHide={this.props.displayModal}>
+          <Modal show={this.state.show} onHide={this.props.displayModal}>
           <Modal.Header closeButton={true}>
               <Modal.Title id="contained-modal-title">{this.state.food}</Modal.Title>
           </Modal.Header>
@@ -93,4 +86,4 @@ const mapStateToProps = state => {
 
 };
 
-export default connect(mapStateToProps, {newFood, newIngr, addFood, addIngr})(NewRecipe);
+export default connect(mapStateToProps, {setNewObj})(NewRecipe);

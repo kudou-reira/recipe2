@@ -8,10 +8,21 @@ class FoodList extends Component {
     super(props);
     this.state = {
         show: false
-    }
+    };
 
-    this.displayModal = this.displayModal.bind(this)
-  };
+    this.displayModal = this.displayModal.bind(this);
+  }
+
+  componentWillUpdate(){
+    this.setModalStatus();
+  }
+
+  setModalStatus() {
+
+    if(this.state.show === true){
+      this.setState({show: false});
+    }
+  }
 
   displayModal() {
 
@@ -43,9 +54,7 @@ class FoodList extends Component {
 const mapStateToProps = state => {
 
     return {
-
         food: state.food
-
     };
 
 };

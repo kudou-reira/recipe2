@@ -1,1 +1,3 @@
-export const SET_OBJ = 'set_obj';
+export const SET_NEW_OBJ = 'set_new_obj';
+export const UPDATE_OBJ = 'update_obj';
+

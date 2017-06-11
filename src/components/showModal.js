@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import IngredientProperties from './listIngredients';
 import * as ReactBootstrap from 'react-bootstrap';
 import {connect} from 'react-redux';
-import {setObj} from '../actions';
+import {updateObj} from '../actions';
 //import {Button, Modal} from 'react-bootstrap';
 import Lockr from 'lockr';
 
@@ -51,9 +51,7 @@ class ModalClass extends Component {
  saveRecipe() {
     
     const {tempFood, tempIngr} = this.state;
-  
-    this.props.setObj({tempFood, tempIngr});
-    
+    this.props.updateObj({tempFood, tempIngr});
     //this.setState({props.item.food: this.props.food});
     this.closeModal();
   }
@@ -141,4 +139,4 @@ const mapStateToProps = state => {
     
 };
 
-export default connect(mapStateToProps, {setObj})(ModalClass);
+export default connect(mapStateToProps, {updateObj})(ModalClass);
