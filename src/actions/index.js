@@ -1,18 +1,18 @@
 import {SET_NEW_OBJ, UPDATE_OBJ} from './types';
 
 
-export const setNewObj = ({food, ingredients}) => {
+export const setNewObj = ({tempFood, tempIngr}) => {
 
     return {
         type: SET_NEW_OBJ,
-        payload: {food, ingredients}
+        payload: {tempFood, tempIngr}
     }
 }
 
-export const updateObj = ({food, ingredients}) => {
+export const updateObj = ({tempKey, tempFood, tempIngr}) => {
 
     return {
         type: UPDATE_OBJ,
-        payload: {food, ingredients}
+        payload: {tempKey, tempFood, tempIngr}
     }
 }

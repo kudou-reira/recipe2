@@ -37,25 +37,28 @@ class ModalClass extends Component {
   closeModal() {
     this.setState({show: false})
   }
-    
+
   onFoodChange(e) {
-    
+
     this.setState({tempFood: e});
+    console.log("this is the current food", this.state.tempFood);
+    console.log("the current key is", this.props.item.key)
   }
-    
+
   onRecipeChange(e) {
-    
+
     this.setState({tempIngr: e});
+    console.log("this is the current food", this.state.tempIngr);
+
   }
-    
+
  saveRecipe() {
-    
+    var tempKey = this.props.item.key;
     const {tempFood, tempIngr} = this.state;
-    this.props.updateObj({tempFood, tempIngr});
-    //this.setState({props.item.food: this.props.food});
+    this.props.updateObj({tempKey, tempFood, tempIngr});
     this.closeModal();
   }
-    
+
 
   /*
   renderModal() {
@@ -72,7 +75,7 @@ class ModalClass extends Component {
   */
 
   renderModal() {
-      
+
       return(
         <div className="modal-container">
             <Modal show={this.state.show} onHide={this.closeModal.bind(this)}>
@@ -83,18 +86,18 @@ class ModalClass extends Component {
                 <Modal.Body>
                     <form className="form-group">
                          <label>Recipe Name</label>
-                         <input type='text' 
-                            className="form-control" 
+                         <input type='text'
+                            className="form-control"
                             defaultValue={this.state.food}
                             onChange = {e => this.onFoodChange(e.target.value)} />
                          <label>Ingredients</label>
-                         <textarea type='text' 
-                            className="form-control" 
+                         <textarea type='text'
+                            className="form-control"
                             defaultValue={this.state.ingredients}
                             onChange = {e => this.onRecipeChange(e.target.value)} />
                      </form>
                 </Modal.Body>
-                
+
                  <Modal.Footer>
                     <Button bsStyle="primary" onClick={this.saveRecipe.bind(this)} >
                         Save Recipe
@@ -109,9 +112,9 @@ class ModalClass extends Component {
 
 
   render() {
-    
+
     const { food, ingredients } = this.state
-    
+
     return (
       <div className="container">
         <button
@@ -132,11 +135,11 @@ class ModalClass extends Component {
 const mapStateToProps = state => {
 
     return {
-        
+
         food: state.food
-        
+
     };
-    
+
 };
 
 export default connect(mapStateToProps, {updateObj})(ModalClass);
