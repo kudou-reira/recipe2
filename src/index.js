@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import reducers from './reducers';
-import FoodList from './components/foodList';
+import Main from './components/foodList';
 import { createLogger }  from 'redux-logger';
+
 const logger = createLogger({ collapsed: true })
 
 const createStoreWithMiddleware = applyMiddleware(logger)(createStore);
@@ -14,15 +15,16 @@ const store = createStoreWithMiddleware(reducers,
 const App = () => {
   return (
     <div>
-      {/* Why not a header tag? */}
-      <h3 className="recipeTitle">
-        Recipe List!
-      </h3>
-      <FoodList />
+      <h3 className="recipeTitle">Recipe List!</h3>
+      <Main />
     </div>
   );
 }
 
 
 
-ReactDOM.render(<Provider store={store}><App /></Provider>, document.querySelector('.container'));
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>, document.querySelector('.container')
+);

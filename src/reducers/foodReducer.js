@@ -21,14 +21,11 @@ export default (state = INITIAL_STATE, action) => {
         return [...state, newFoodItem];
 
       case UPDATE_OBJ:
-        var hold = state;
-        var replace = function (arr, key, update){
-            var index = _.indexOf(arr, _.find(arr, key));
-            arr.splice(index, 1, update);
-        }
-        replace(hold, {key: action.payload.tempKey}, {key: action.payload.tempKey, food: action.payload.tempFood, ingredients: action.payload.tempIngr})
-        return hold;
-
+        // we cannot directly mutate the state, so make a deep clone of it and return that
+        const food = _.cloneDeep(state)
+        const { tempKey, tempFood, tempIngr } = action.payload
+        food[tempKey] = { key: tempKey, food: tempFood, ingredients: tempIngr }
+        return food
       default:
         return state;
     }

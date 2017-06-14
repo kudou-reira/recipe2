@@ -1,50 +1,34 @@
 import React, { Component } from 'react';
-import IngredientProperties from './listIngredients';
 import { Button, Modal } from 'react-bootstrap';
-import {connect} from 'react-redux';
-import {setNewObj} from '../actions';
-//import {Button, Modal} from 'react-bootstrap';
 import Lockr from 'lockr';
-//import RenderModal from './renderModal';
 
-
-class NewRecipe extends Component {
+export default class NewRecipe extends Component {
 
   constructor(props) {
     super(props)
-    const { modalStatus, key } = props
     this.state = {
-      show: true,
-      food: 'Recipe Name',
-      ingredients: 'Enter Ingredients,Separated,By Commas',
       tempFood: '',
       tempIngr: ''
     }
+
+    this.handleChange = this.handleChange.bind(this)
+    this.saveRecipe = this.saveRecipe.bind(this)
   }
 
-  closeModal() {
-    this.setState({show: false})
-  }
-
-  onNewFood(e) {
-    this.setState({tempFood: e});
-  }
-
-  onNewIngr(e) {
-    this.setState({tempIngr: e});
+  handleChange(e) {
+    this.setState({ [e.target.name]: e.target.value })
   }
 
   saveRecipe() {
-
-    const {tempFood, tempIngr} = this.state;
-    this.props.setNewObj({tempFood, tempIngr});
-    this.setState({show: false})
+    const { tempFood, tempIngr } = this.state;
+    this.props.actions.setNewObj({ tempFood, tempIngr });
+    this.props.hideModal()
   }
 
   render() {
     return(
       <div className="modal-container">
-          <Modal show={this.state.show} onHide={this.props.displayModal}>
+          <Modal show={true} onHide={this.props.hideModal}>
           <Modal.Header closeButton={true}>
               <Modal.Title id="contained-modal-title">{this.state.food}</Modal.Title>
           </Modal.Header>
@@ -54,36 +38,30 @@ class NewRecipe extends Component {
                        <label>Recipe Name</label>
                        <input type='text'
                           className="form-control"
-                          placeholder={this.state.food}
-                          onChange = {e => this.onNewFood(e.target.value)} />
+                          placeholder="Add a Title"
+                          value={this.state.tempFood}
+                          onChange={this.handleChange}
+                          name="tempFood"
+                        />
                        <label>Ingredients</label>
                        <textarea type='text'
                           className="form-control"
-                          placeholder={this.state.ingredients}
-                          onChange = {e => this.onNewIngr(e.target.value)} />
+                          placeholder="Enter Ingredients Separated by Commas"
+                          onChange={this.handleChange}
+                          value={this.state.tempIngr}
+                          name="tempIngr"
+                        />
                    </form>
               </Modal.Body>
 
                <Modal.Footer>
-                  <Button bsStyle="primary" onClick={this.saveRecipe.bind(this)} >
+                  <Button bsStyle="primary" onClick={this.saveRecipe} >
                       Save Recipe
                   </Button>
-                  <Button onClick={this.props.displayModal}>Close</Button>
+                  <Button onClick={this.props.hideModal}>Close</Button>
                </Modal.Footer>
           </Modal>
       </div>
     )
   }
 }
-
-const mapStateToProps = state => {
-
-    return {
-
-        food: state.food
-
-    };
-
-};
-
-export default connect(mapStateToProps, {setNewObj})(NewRecipe);
