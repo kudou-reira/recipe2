@@ -1,12 +1,15 @@
 import React from 'react';
-import ModalClass from './showModal';
+import FoodItemModal from './showModal';
 
 const FoodProperties = (props) => {
 
   const foodItems = props.food.map((item, index) => {
     return (
       <li key={index} className="list-group-item">
-        <ModalClass item = {item} />
+        <FoodItemModal
+          item={item}
+          actions={props.actions}
+        />
       </li>
     );
   });

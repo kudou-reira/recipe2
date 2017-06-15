@@ -1,9 +1,12 @@
-import React, {Component} from 'react';
-import FoodProperties from './foodProps';
-import NewRecipe from './createNew';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux'
+import { actionCreators } from '../actions'
 
-class FoodList extends Component {
+import FoodList from './foodProps';
+import NewRecipe from './createNew';
+
+class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,19 +16,7 @@ class FoodList extends Component {
     this.displayModal = this.displayModal.bind(this);
   }
 
-  componentWillUpdate(){
-    this.setModalStatus();
-  }
-
-  setModalStatus() {
-
-    if(this.state.show === true){
-      this.setState({show: false});
-    }
-  }
-
   displayModal() {
-
     this.setState({
       show: !this.state.show
     });
@@ -35,7 +26,7 @@ class FoodList extends Component {
     return (
       <div>
         <div className="someDiv">
-          <FoodProperties food={this.props.food}/>
+          <FoodList food={this.props.food} actions={this.props.actions} />
           <button
               type="button"
               className="btn btn-info"
@@ -43,7 +34,13 @@ class FoodList extends Component {
           >
             Add Recipe
           </button>
-          {this.state.show ? <NewRecipe displayModal={this.displayModal} /> : null}
+          {this.state.show
+            ? <NewRecipe
+              hideModal={this.displayModal}
+              actions={this.props.actions}
+              />
+            : null
+          }
         </div>
       </div>
 
@@ -51,12 +48,12 @@ class FoodList extends Component {
   }
 }
 
-const mapStateToProps = state => {
-
-    return {
-        food: state.food
-    };
-
+const mapStateToProps = ({ food }) => {
+    return { food };
 };
 
-export default connect(mapStateToProps)(FoodList);
+const mapDispatchToProps = (dispatch) => {
+  return { actions: bindActionCreators(actionCreators, dispatch) }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
