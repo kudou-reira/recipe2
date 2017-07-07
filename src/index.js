@@ -15,7 +15,6 @@ const store = createStoreWithMiddleware(reducers,
 const App = () => {
   return (
     <div>
-      <h3 className="recipeTitle">Recipe List!</h3>
       <Main />
     </div>
   );

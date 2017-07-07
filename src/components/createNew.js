@@ -8,7 +8,8 @@ export default class NewRecipe extends Component {
     super(props)
     this.state = {
       tempFood: '',
-      tempIngr: ''
+      tempIngr: '',
+      tempURL: ''
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -20,8 +21,8 @@ export default class NewRecipe extends Component {
   }
 
   saveRecipe() {
-    const { tempFood, tempIngr } = this.state;
-    this.props.actions.setNewObj({ tempFood, tempIngr });
+    const { tempFood, tempIngr, tempURL } = this.state;
+    this.props.actions.setNewObj({ tempFood, tempIngr, tempURL });
     this.props.hideModal()
   }
 
@@ -32,7 +33,6 @@ export default class NewRecipe extends Component {
           <Modal.Header closeButton={true}>
               <Modal.Title id="contained-modal-title">{this.state.food}</Modal.Title>
           </Modal.Header>
-
               <Modal.Body>
                   <form className="form-group">
                        <label>Recipe Name</label>
@@ -43,8 +43,17 @@ export default class NewRecipe extends Component {
                           onChange={this.handleChange}
                           name="tempFood"
                         />
-                       <label>Ingredients</label>
+                       <label className="labelGap">Photo URL</label>
+                       <input type='text'
+                          className="form-control"
+                          placeholder="Add a Photo URL"
+                          value={this.state.tempURL}
+                          onChange={this.handleChange}
+                          name="tempURL"
+                        />
+                       <label className="labelGap">Ingredients</label>
                        <textarea type='text'
+                          rows="12"
                           className="form-control"
                           placeholder="Enter Ingredients Separated by Commas"
                           onChange={this.handleChange}
@@ -58,7 +67,7 @@ export default class NewRecipe extends Component {
                   <Button bsStyle="primary" onClick={this.saveRecipe} >
                       Save Recipe
                   </Button>
-                  <Button onClick={this.props.hideModal}>Close</Button>
+                  <Button bsStyle="warning" onClick={this.props.hideModal}>Close</Button>
                </Modal.Footer>
           </Modal>
       </div>

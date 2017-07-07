@@ -25,22 +25,31 @@ class Main extends Component {
   render() {
     return (
       <div>
+        
+        <header className="pageHeader">
+            <div className="container flex-container">
+                <h3 className="recipeTitle">Recipe List!</h3>
+                    <button
+                      type="button"
+                      className="btn btn-info addButton"
+                      onClick = {this.displayModal}
+                    >
+                        Add Recipe
+                    </button>
+            </div>
+        </header>
         <div className="someDiv">
-          <FoodList food={this.props.food} actions={this.props.actions} />
-          <button
-              type="button"
-              className="btn btn-info"
-              onClick = {this.displayModal}
-          >
-            Add Recipe
-          </button>
-          {this.state.show
-            ? <NewRecipe
-              hideModal={this.displayModal}
-              actions={this.props.actions}
-              />
-            : null
-          }
+          <div className="container">
+              <FoodList food={this.props.food} actions={this.props.actions} />
+
+              {this.state.show
+                ? <NewRecipe
+                      hideModal={this.displayModal}
+                      actions={this.props.actions}
+                  />
+                : null
+              }
+          </div>
         </div>
       </div>
 

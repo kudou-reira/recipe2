@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import Lockr from 'lockr';
-import _ from 'lodash'
+import _ from 'lodash';
 
 
-export default class ModalClass extends Component {
+export default class FoodItemModal extends Component {
 
   constructor(props) {
     super(props)
-    const { food, ingredients } = props.item
+    const { food, ingredients, url } = props.item
     this.state = {
       show: false,
       tempFood: food,
-      tempIngr: ingredients
+      tempIngr: ingredients,
+      tempURL: url,
+      tempItem: this.props.item
     }
 
     this.handleClick = this.handleClick.bind(this)
@@ -20,6 +22,28 @@ export default class ModalClass extends Component {
     this.handleChange = this.handleChange.bind(this)
   }
 
+//componentDidUpdate () {
+//  if (this.state.tempItem.length !== this.props.item.length) {
+//    this.setState({
+//      tempFood: food,
+//      tempIngr: ingredients,
+//      tempURL: url,
+//      tempItem: this.props.item
+//    })
+//  }
+//}
+    
+componentWillReceiveProps (nextProps) {
+  if (nextProps.item !== this.props.item) {
+    this.setState({
+      tempFood: nextProps.item.food,
+      tempIngr: nextProps.item.ingredients,
+      tempURL: nextProps.item.url,
+      tempItem: nextProps.item
+    })
+  }
+}
+    
   handleClick() {
     this.setState({show: true});
   }
@@ -33,11 +57,17 @@ export default class ModalClass extends Component {
   closeModal() {
     this.setState({show: false})
   }
+    
+ deleteRecipe(){
+    var tempKey = this.props.item.key;
+    this.props.actions.deleteObj(tempKey);
+    this.closeModal();
+ }
 
  saveRecipe() {
     var tempKey = this.props.item.key;
-    const { tempFood, tempIngr } = this.state;
-    this.props.actions.updateObj({ tempKey, tempFood, tempIngr });
+    const { tempFood, tempIngr, tempURL } = this.state;
+    this.props.actions.updateObj({ tempKey, tempFood, tempIngr, tempURL });
     this.closeModal();
   }
 
@@ -46,7 +76,7 @@ export default class ModalClass extends Component {
         <div className="modal-container">
             <Modal show={true} onHide={this.closeModal}>
               <Modal.Header closeButton={true}>
-                  <Modal.Title id="contained-modal-title">{this.props.item.food}</Modal.Title>
+                  <Modal.Title id="contained-modal-title" className="modalTitle">{this.props.item.food}</Modal.Title>
               </Modal.Header>
               <Modal.Body>
                   <form className="form-group">
@@ -58,8 +88,17 @@ export default class ModalClass extends Component {
                           name="tempFood"
                           onChange={this.handleChange}
                         />
-                       <label>Ingredients</label>
+                       <label className="labelGap">Photo URL</label>
+                       <input type='text'
+                          className="form-control"
+                          placeholder="Add a Photo URL"
+                          value={this.state.tempURL}
+                          onChange={this.handleChange}
+                          name="tempURL"
+                        />
+                       <label className="labelGap">Ingredients</label>
                        <textarea
+                          rows="12"
                           type='text'
                           className="form-control"
                           value={this.state.tempIngr}
@@ -72,7 +111,10 @@ export default class ModalClass extends Component {
                 <Button bsStyle="primary" onClick={this.saveRecipe.bind(this)} >
                     Update Recipe
                 </Button>
-                <Button onClick={this.closeModal.bind(this)}>Close</Button>
+                <Button bsStyle="danger" onClick={this.deleteRecipe.bind(this)} >
+                    Delete Recipe
+                </Button>
+                <Button bsStyle="warning" onClick={this.closeModal.bind(this)}>Close</Button>
              </Modal.Footer>
             </Modal>
         </div>
@@ -83,7 +125,7 @@ export default class ModalClass extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container-fluid wrapButton">
         <button
           type="button"
           className="btn btn-info"
