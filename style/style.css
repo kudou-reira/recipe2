@@ -94,12 +94,55 @@ ul{
 	z-index: 10;
     box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);	
     width: 355px; 
-    padding: 25px 36px;
+    padding: 25px 36.5px;
     text-align: center;
 	float: left; 
     margin: 0 7px 10px 7px;
     word-wrap: break-word;
+    border-radius: 15px;
 }
+
+/* 
+#parent > div {
+    -webkit-transition: opacity .5s;
+    -moz-transition: opacity .5s;
+    transition: opacity .5s;
+}
+
+/* 
+#parent:hover > .box {
+  opacity:0.6;
+}
+
+#parent > div {
+   opacity:1;
+}
+
+*/
+
+#dark {
+    -webkit-filter: brightness(100%);
+	-moz-filter: brightness(100%);
+	-o-filter: brightness(100%);
+	-ms-filter: brightness(100%);
+	filter: brightness(100%);
+}
+
+#dark:hover{
+    -webkit-filter: brightness(75%);
+	-moz-filter: brightness(75%);
+	-o-filter: brightness(75%);
+	-ms-filter: brightness(75%);
+	filter: brightness(75%);
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+    
+}
+
+
 
 .pageHeader {
 	background: $color-primary;
@@ -116,31 +159,89 @@ ul{
     color: #000000 !important;
     background: #FFFFFF !important;
     cursor:pointer;
-    font-size:1em;
+    font-size:1.07em !important;
     margin: 10px;
     outline: none;
-    width: auto !important;
-    font-weight: 500 !important;
+    font-weight: 400 !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    width: 230px;
+    font-family: 'Quattrocento Sans', sans-serif;
+    border-radius: 24px !important;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);	
 }
 
 .btn-primary{
-    
+    color: #000000 !important;
+    background: #FFFFFF !important;
+    cursor:pointer;
+    font-size:1.07em !important;
+    margin: 10px;
+    outline: none;
+    font-weight: 400 !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    width: auto;
+    font-family: 'Quattrocento Sans', sans-serif;
+    border-radius: 24px !important;
+}
+
+.btn-danger{
+    color: #000000 !important;
+    background: #FFFFFF !important;
+    cursor:pointer;
+    font-size:1.07em !important;
+    margin: 10px;
+    outline: none;
+    font-weight: 400 !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    width: auto;
+    font-family: 'Quattrocento Sans', sans-serif;
+    border-radius: 24px !important;
+}
+
+.btn-success{
+    color: #000000 !important;
+    background: #FFFFFF !important;
+    cursor:pointer;
+    font-size:1.07em !important;
+    margin: 10px;
+    outline: none;
+    font-weight: 400 !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    width: auto;
+    font-family: 'Quattrocento Sans', sans-serif;
+    border-radius: 24px !important;
 }
 
 .btn{
     color: #FFFFFF;
     cursor:pointer;
     font-size:1em;
-    margin: 10px;
+    margin: 5px;
     outline: none;
     white-space: normal;
-    
 }
+
+
 
 .wrapButton{
     width: 260px;
-    padding: 10px;
+    padding: 10px 10px 10px 10px;
     overflow:hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis !important;
+    -o-text-overflow: ellipsis;
 }
 
 .labelGap{
@@ -154,10 +255,25 @@ ul{
 img{
     max-width: 280px;
     max-height: 280px;
+    border-radius: 10px;
+    box-shadow: 6px 2px 8px 0 rgba(0,0,0,0.16), 1px 7px 10px 0 rgba(0,0,0,0.2);	
 }
 
 .lowGap{
     margin-bottom: 15%;
+}
+
+.modalIMG{
+    text-align: center;
+    vertical-align: middle;
+    margin: 5% 0% 5% 0%;
+}
+
+.ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
 }
 
 

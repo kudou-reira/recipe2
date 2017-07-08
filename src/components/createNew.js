@@ -67,7 +67,7 @@ export default class NewRecipe extends Component {
                   <Button bsStyle="primary" onClick={this.saveRecipe} >
                       Save Recipe
                   </Button>
-                  <Button bsStyle="warning" onClick={this.props.hideModal}>Close</Button>
+                  <Button bsStyle="success" onClick={this.props.hideModal}>Close</Button>
                </Modal.Footer>
           </Modal>
       </div>

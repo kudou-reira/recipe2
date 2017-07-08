@@ -79,6 +79,9 @@ componentWillReceiveProps (nextProps) {
                   <Modal.Title id="contained-modal-title" className="modalTitle">{this.props.item.food}</Modal.Title>
               </Modal.Header>
               <Modal.Body>
+                  <div className="modalIMG">
+                    <img src = {this.state.tempURL} />
+                  </div>
                   <form className="form-group">
                        <label>Recipe Name</label>
                        <input
@@ -114,7 +117,7 @@ componentWillReceiveProps (nextProps) {
                 <Button bsStyle="danger" onClick={this.deleteRecipe.bind(this)} >
                     Delete Recipe
                 </Button>
-                <Button bsStyle="warning" onClick={this.closeModal.bind(this)}>Close</Button>
+                <Button bsStyle="success" onClick={this.closeModal.bind(this)}>Close</Button>
              </Modal.Footer>
             </Modal>
         </div>
@@ -125,7 +128,7 @@ componentWillReceiveProps (nextProps) {
 
   render() {
     return (
-      <div className="container-fluid wrapButton">
+      <div className="container-fluid ellipsis wrapButton ">
         <button
           type="button"
           className="btn btn-info"

@@ -6,7 +6,7 @@ const FoodProperties = (props) => {
   const foodItems = props.food.map((item, index) => {
     return (
 //      <li key={index} className="list-group-item">
-        <div className = "box">
+        <div className = "box" id="dark">
             <div className = "row">
                 <div className="col-sm-4">
                         <div>
