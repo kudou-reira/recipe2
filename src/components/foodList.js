@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
 import { actionCreators } from '../actions'
 
-import FoodList from './foodProps';
+import FoodProps from './foodProps';
 import NewRecipe from './createNew';
 
 class Main extends Component {
@@ -40,7 +40,7 @@ class Main extends Component {
         </header>
         <div className="someDiv">
           <div className="container">
-              <FoodList food={this.props.food} actions={this.props.actions} />
+              <FoodProps food={this.props.food} actions={this.props.actions} />
 
               {this.state.show
                 ? <NewRecipe

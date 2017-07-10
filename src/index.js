@@ -5,12 +5,26 @@ import { createStore, applyMiddleware } from 'redux';
 import reducers from './reducers';
 import Main from './components/foodList';
 import { createLogger }  from 'redux-logger';
+import { loadState, saveState } from './lib/localStorage';
+import fakeData from './lib/initialData';
 
 const logger = createLogger({ collapsed: true })
 
+
+const persistedState = loadState();
+
 const createStoreWithMiddleware = applyMiddleware(logger)(createStore);
-const store = createStoreWithMiddleware(reducers,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+//const store = createStoreWithMiddleware(reducers,
+//  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+
+const store = createStore(
+    reducers,
+    persistedState
+);
+
+store.subscribe(() => {
+    saveState(store.getState());
+});
 
 const App = () => {
   return (

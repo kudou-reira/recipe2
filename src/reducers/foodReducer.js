@@ -4,10 +4,18 @@ import {
   DELETE_OBJ
 } from '../actions/types';
 import _ from 'lodash';
-
 import fakeData from '../lib/initialData'
 
-const INITIAL_STATE = fakeData
+const INITIAL_STATE = fakeData;
+
+//const INITIAL_STATE = [
+//  {
+//    key: 0,
+//    food: '',
+//    ingredients: '',
+//    url: ''
+//  }
+//]
 
 export default (state = INITIAL_STATE, action) => {
 

@@ -1,8 +1,9 @@
 import React from 'react';
 import FoodItemModal from './showModal';
+import XCross from './xCross';
 
-const FoodProperties = (props) => {
-
+const FoodProps = (props) => {
+    
   const foodItems = props.food.map((item, index) => {
     return (
 //      <li key={index} className="list-group-item">
@@ -10,6 +11,10 @@ const FoodProperties = (props) => {
             <div className = "row">
                 <div className="col-sm-4">
                         <div>
+                            <XCross
+                              item={item}
+                              actions={props.actions}
+                            />
                             <div className="lowGap">
                                 <img src = {item.url} />
                             </div>
@@ -29,4 +34,5 @@ const FoodProperties = (props) => {
   return <ul>{foodItems}</ul>
 }
 
-export default FoodProperties;
+export default FoodProps;
+

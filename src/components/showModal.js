@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Modal } from 'react-bootstrap';
-import Lockr from 'lockr';
-import _ from 'lodash';
+
 
 
 export default class FoodItemModal extends Component {
