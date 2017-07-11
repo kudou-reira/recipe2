@@ -6,7 +6,7 @@ import { actionCreators } from '../actions';
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
 import EntertainProps from './entertainProps';
-import NewRecipe from './createNew';
+import NewCard from './createNew';
 
 class Main extends Component {
   constructor(props) {
@@ -52,7 +52,7 @@ class Main extends Component {
                 <EntertainProps list={this.props.list} actions={this.props.actions} />
               </ReactCSSTransitionGroup>
               {this.state.show
-                ? <NewRecipe
+                ? <NewCard
                       hideModal={this.displayModal}
                       actions={this.props.actions}
                   />

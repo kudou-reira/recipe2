@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import Lockr from 'lockr';
 
-export default class NewRecipe extends Component {
+export default class NewCard extends Component {
 
   constructor(props) {
     super(props)
@@ -14,14 +14,14 @@ export default class NewRecipe extends Component {
     }
 
     this.handleChange = this.handleChange.bind(this)
-    this.saveRecipe = this.saveRecipe.bind(this)
+    this.saveCard = this.saveCard.bind(this)
   }
 
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value })
   }
 
-  saveRecipe() {
+  saveCard() {
     const { tempTitle, tempContent, tempPhotoURL, tempLink } = this.state;
     this.props.actions.setNewObj({ tempTitle, tempContent, tempPhotoURL, tempLink });
     this.props.hideModal()
@@ -64,7 +64,7 @@ export default class NewRecipe extends Component {
                         <label className="labelGap">Video URL</label>
                         <input type='text'
                           className="form-control"
-                          placeholder="Add a Video URL (Youtube/Vimeo)"
+                          placeholder="Add a Video URL (Youtube)"
                           value={this.state.tempLink}
                           onChange={this.handleChange}
                           name="tempLink"
@@ -73,7 +73,7 @@ export default class NewRecipe extends Component {
               </Modal.Body>
 
                <Modal.Footer>
-                  <Button bsStyle="primary" onClick={this.saveRecipe} >
+                  <Button bsStyle="primary" onClick={this.saveCard} >
                       Save Card
                   </Button>
                   <Button bsStyle="success" onClick={this.props.hideModal}>Close</Button>

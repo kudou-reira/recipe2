@@ -18,6 +18,6 @@ export default [
     title: 'Youkoso Jitsuryoku Shijou Shugi no Kyoushitsu e',
     content: 'Koudo Ikusei Senior High School, a leading school with state-of-the-art facilities. The students there have the freedom to wear any hairstyle and bring any personal effects they desire. Koudo Ikusei is like a utopia, but the truth is that only the most superior students receive favorable treatment.',
     url: 'http://cdn.novelupdates.com/images/2017/02/cover00219.jpeg',
-    link: 'https://www.youtube.com/watch?v=7W8tWrMUunQ'
+    link: 'https://www.youtube.com/watch?v=TVHgX4YScw0'
   }
 ]

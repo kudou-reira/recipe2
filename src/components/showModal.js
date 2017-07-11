@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import { Button, Modal } from 'react-bootstrap';
-
+import YouTube from 'react-youtube';
 
 export default class ListItemModal extends Component {
 
   constructor(props) {
     super(props)
-    const { title, content, url } = props.item
+    const { title, content, url, link } = props.item
     this.state = {
       show: false,
       tempTitle: title,
       tempContent: content,
       tempPhotoURL: url,
+      tempLink: link,
       tempItem: this.props.item
     }
 
@@ -26,10 +27,27 @@ componentWillReceiveProps (nextProps) {
       tempTitle: nextProps.item.title,
       tempContent: nextProps.item.content,
       tempPhotoURL: nextProps.item.url,
+      tempLink: nextProps.item.link,
       tempItem: nextProps.item
     })
   }
 }
+    
+  youtubeVideo() {
+
+    var url = this.state.tempLink;
+    var videoId = url.match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/);
+    if(videoId != null) {
+       return <div className = "embed-responsive embed-responsive-16by9">
+                <YouTube videoId = {videoId[1]} />
+                {console.log(videoId[1])}
+              </div>;
+    } else { 
+        return <div className = "embed-responsive embed-responsive-16by9">
+                The youtube link is not valid!
+               </div>;
+    }
+  }
     
   handleClick() {
     this.setState({show: true});
@@ -45,16 +63,16 @@ componentWillReceiveProps (nextProps) {
     this.setState({show: false})
   }
     
- deleteRecipe(){
+ deleteCard(){
     var tempKey = this.props.item.key;
     this.props.actions.deleteObj(tempKey);
     this.closeModal();
  }
 
- saveRecipe() {
+ saveCard() {
     var tempKey = this.props.item.key;
-    const { tempTitle, tempContent, tempPhotoURL } = this.state;
-    this.props.actions.updateObj({ tempKey, tempTitle, tempContent, tempPhotoURL });
+    const { tempTitle, tempContent, tempPhotoURL, tempLink } = this.state;
+    this.props.actions.updateObj({ tempKey, tempTitle, tempContent, tempPhotoURL, tempLink });
     this.closeModal();
   }
 
@@ -95,10 +113,12 @@ componentWillReceiveProps (nextProps) {
                           name="tempContent"
                           onChange={this.handleChange}
                         />
+                        <label className="labelGap">PV/OST/Music</label>
+                        {this.youtubeVideo()}
                         <label className="labelGap">Video URL</label>
                         <input type='text'
                           className="form-control"
-                          placeholder="Add a Video URL (Youtube/Vimeo)"
+                          placeholder="Add a Video URL (Youtube)"
                           value={this.state.tempLink}
                           onChange={this.handleChange}
                           name="tempLink"
@@ -106,10 +126,10 @@ componentWillReceiveProps (nextProps) {
                    </form>
               </Modal.Body>
              <Modal.Footer>
-                <Button bsStyle="primary" onClick={this.saveRecipe.bind(this)} >
+                <Button bsStyle="primary" onClick={this.saveCard.bind(this)} >
                     Update Card
                 </Button>
-                <Button bsStyle="danger" onClick={this.deleteRecipe.bind(this)} >
+                <Button bsStyle="danger" onClick={this.deleteCard.bind(this)} >
                     Delete Card
                 </Button>
                 <Button bsStyle="success" onClick={this.closeModal.bind(this)}>Close</Button>
