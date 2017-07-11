@@ -29,10 +29,13 @@
     "lockr": "^0.8.4",
     "lodash": "^3.10.1",
     "react": "^0.14.9",
+    "react-addons-css-transition-group": "15.6.0",
     "react-bootstrap": "^0.30.10",
+    "react-css-stagger": "0.0.5",
     "react-dom": "^0.14.9",
     "react-redux": "^4.4.8",
     "react-router": "^2.0.1",
+    "react-staggered-animation": "0.0.2",
     "redux": "^3.6.0",
     "redux-logger": "^3.0.6"
   }

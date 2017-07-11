@@ -1,12 +1,14 @@
 import React from 'react';
 import FoodItemModal from './showModal';
 import XCross from './xCross';
+import Stagger from 'react-css-stagger';
+
+var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
 const FoodProps = (props) => {
     
   const foodItems = props.food.map((item, index) => {
     return (
-//      <li key={index} className="list-group-item">
         <div className = "box" id="dark">
             <div className = "row">
                 <div className="col-sm-4">
@@ -18,7 +20,6 @@ const FoodProps = (props) => {
                             <div className="lowGap">
                                 <img src = {item.url} />
                             </div>
-                        
                             <FoodItemModal
                               item={item}
                               actions={props.actions}
@@ -27,12 +28,17 @@ const FoodProps = (props) => {
                 </div>
             </div>
         </div>
-//      </li>
     );
   });
 
-  return <ul>{foodItems}</ul>
+  return <div>
+            <ReactCSSTransitionGroup
+              transitionName="card"
+              transitionEnterTimeout={1100}
+              transitionLeaveTimeout={800}>
+              {foodItems}
+            </ReactCSSTransitionGroup>
+         </div>
 }
 
 export default FoodProps;
-

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux'
-import { actionCreators } from '../actions'
+import { bindActionCreators } from 'redux';
+import { actionCreators } from '../actions';
+
+var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
 import FoodProps from './foodProps';
 import NewRecipe from './createNew';
@@ -23,9 +25,9 @@ class Main extends Component {
   }
 
   render() {
+    
     return (
       <div>
-        
         <header className="pageHeader">
             <div className="container flex-container">
                 <h3 className="recipeTitle">Recipe List!</h3>
@@ -40,8 +42,15 @@ class Main extends Component {
         </header>
         <div className="someDiv">
           <div className="container">
-              <FoodProps food={this.props.food} actions={this.props.actions} />
-
+              <ReactCSSTransitionGroup 
+                transitionName="card"
+                transitionAppear={true}
+                transitionAppearTimeout={500}
+                transitionEnter={false}
+                transitionLeave={false}
+              >
+                <FoodProps food={this.props.food} actions={this.props.actions} />
+              </ReactCSSTransitionGroup>
               {this.state.show
                 ? <NewRecipe
                       hideModal={this.displayModal}

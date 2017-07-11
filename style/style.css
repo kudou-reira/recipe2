@@ -296,4 +296,32 @@ img{
     -o-text-overflow: ellipsis;
 }
 
+.card-appear {
+  opacity: 0.01;
+}
+
+.card-appear.card-appear-active {
+  opacity: 1;
+  transition: opacity 1.25s ease-in;
+}
+
+.card-enter {
+  opacity: 0.01;
+}
+
+.card-enter.card-enter-active {
+  opacity: 1;
+  transition: opacity 1100ms ease-in;
+}
+
+.card-leave {
+  opacity: 1;
+}
+
+.card-leave.card-leave-active {
+  opacity: 0.01;
+  transition: opacity 800ms ease-in;
+}
+
+
 
