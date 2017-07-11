@@ -2,17 +2,16 @@ import React, { Component } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 
 
-
-export default class FoodItemModal extends Component {
+export default class ListItemModal extends Component {
 
   constructor(props) {
     super(props)
-    const { food, ingredients, url } = props.item
+    const { title, content, url } = props.item
     this.state = {
       show: false,
-      tempFood: food,
-      tempIngr: ingredients,
-      tempURL: url,
+      tempTitle: title,
+      tempContent: content,
+      tempPhotoURL: url,
       tempItem: this.props.item
     }
 
@@ -20,24 +19,13 @@ export default class FoodItemModal extends Component {
     this.closeModal = this.closeModal.bind(this)
     this.handleChange = this.handleChange.bind(this)
   }
-
-//componentDidUpdate () {
-//  if (this.state.tempItem.length !== this.props.item.length) {
-//    this.setState({
-//      tempFood: food,
-//      tempIngr: ingredients,
-//      tempURL: url,
-//      tempItem: this.props.item
-//    })
-//  }
-//}
     
 componentWillReceiveProps (nextProps) {
   if (nextProps.item !== this.props.item) {
     this.setState({
-      tempFood: nextProps.item.food,
-      tempIngr: nextProps.item.ingredients,
-      tempURL: nextProps.item.url,
+      tempTitle: nextProps.item.title,
+      tempContent: nextProps.item.content,
+      tempPhotoURL: nextProps.item.url,
       tempItem: nextProps.item
     })
   }
@@ -65,8 +53,8 @@ componentWillReceiveProps (nextProps) {
 
  saveRecipe() {
     var tempKey = this.props.item.key;
-    const { tempFood, tempIngr, tempURL } = this.state;
-    this.props.actions.updateObj({ tempKey, tempFood, tempIngr, tempURL });
+    const { tempTitle, tempContent, tempPhotoURL } = this.state;
+    this.props.actions.updateObj({ tempKey, tempTitle, tempContent, tempPhotoURL });
     this.closeModal();
   }
 
@@ -75,46 +63,54 @@ componentWillReceiveProps (nextProps) {
         <div className="modal-container">
             <Modal show={true} onHide={this.closeModal}>
               <Modal.Header closeButton={true}>
-                  <Modal.Title id="contained-modal-title" className="modalTitle">{this.props.item.food}</Modal.Title>
+                  <Modal.Title id="contained-modal-title" className="modalTitle">{this.props.item.title}</Modal.Title>
               </Modal.Header>
               <Modal.Body>
                   <div className="modalIMG">
-                    <img src = {this.state.tempURL} />
+                    <img src = {this.state.tempPhotoURL} className = "adjustModal" />
                   </div>
                   <form className="form-group">
                        <label>Recipe Name</label>
                        <input
                           type='text'
                           className="form-control"
-                          value={this.state.tempFood}
-                          name="tempFood"
+                          value={this.state.tempTitle}
+                          name="tempTitle"
                           onChange={this.handleChange}
                         />
                        <label className="labelGap">Photo URL</label>
                        <input type='text'
                           className="form-control"
                           placeholder="Add a Photo URL"
-                          value={this.state.tempURL}
+                          value={this.state.tempPhotoURL}
                           onChange={this.handleChange}
-                          name="tempURL"
+                          name="tempPhotoURL"
                         />
-                       <label className="labelGap">Ingredients</label>
+                       <label className="labelGap">Summary/Thoughts</label>
                        <textarea
-                          rows="12"
+                          rows="9"
                           type='text'
                           className="form-control"
-                          value={this.state.tempIngr}
-                          name="tempIngr"
+                          value={this.state.tempContent}
+                          name="tempContent"
                           onChange={this.handleChange}
+                        />
+                        <label className="labelGap">Video URL</label>
+                        <input type='text'
+                          className="form-control"
+                          placeholder="Add a Video URL (Youtube/Vimeo)"
+                          value={this.state.tempLink}
+                          onChange={this.handleChange}
+                          name="tempLink"
                         />
                    </form>
               </Modal.Body>
              <Modal.Footer>
                 <Button bsStyle="primary" onClick={this.saveRecipe.bind(this)} >
-                    Update Recipe
+                    Update Card
                 </Button>
                 <Button bsStyle="danger" onClick={this.deleteRecipe.bind(this)} >
-                    Delete Recipe
+                    Delete Card
                 </Button>
                 <Button bsStyle="success" onClick={this.closeModal.bind(this)}>Close</Button>
              </Modal.Footer>
@@ -133,7 +129,7 @@ componentWillReceiveProps (nextProps) {
           className="btn btn-info"
           onClick={this.handleClick}
         >
-          {this.props.item.food}
+          {this.props.item.title}
         </button>
         {this.state.show ? this.renderModal() : null}
       </div>

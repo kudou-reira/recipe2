@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import reducers from './reducers';
-import Main from './components/foodList';
+import Main from './components/mainList';
 import { createLogger }  from 'redux-logger';
 import { loadState, saveState } from './lib/localStorage';
 import fakeData from './lib/initialData';

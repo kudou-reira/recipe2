@@ -1,16 +1,16 @@
 import { SET_NEW_OBJ, UPDATE_OBJ, DELETE_OBJ } from './types';
 
-const setNewObj = ({ tempFood, tempIngr, tempURL }) => {
+const setNewObj = ({ tempTitle, tempContent, tempPhotoURL, tempLink }) => {
     return {
         type: SET_NEW_OBJ,
-        payload: { tempFood, tempIngr, tempURL }
+        payload: { tempTitle, tempContent, tempPhotoURL, tempLink }
     }
 }
 
-const updateObj = ({tempKey, tempFood, tempIngr, tempURL}) => {
+const updateObj = ({tempKey, tempTitle, tempContent, tempPhotoURL, tempLink}) => {
     return {
         type: UPDATE_OBJ,
-        payload: {tempKey, tempFood, tempIngr, tempURL}
+        payload: {tempKey, tempTitle, tempContent, tempPhotoURL, tempLink}
     }
 }
 

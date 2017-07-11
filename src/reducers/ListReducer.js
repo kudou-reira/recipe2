@@ -8,46 +8,37 @@ import fakeData from '../lib/initialData'
 
 const INITIAL_STATE = fakeData;
 
-//const INITIAL_STATE = [
-//  {
-//    key: 0,
-//    food: '',
-//    ingredients: '',
-//    url: ''
-//  }
-//]
-
 export default (state = INITIAL_STATE, action) => {
 
     switch(action.type){
 
       case SET_NEW_OBJ:
-        const newFoodItem = {
+        const newListItem = {
           key: state.length,
-          food: action.payload.tempFood,
-          ingredients: action.payload.tempIngr,
-          url: action.payload.tempURL
+          title: action.payload.tempTitle,
+          content: action.payload.tempContent,
+          url: action.payload.tempPhotoURL,
+          link: action.payload.tempLink
         }
-        return [...state, newFoodItem];
+        return [...state, newListItem];
 
       case UPDATE_OBJ:
         // we cannot directly mutate the state, so make a deep clone of it and return that
-        const food = _.cloneDeep(state)
-        const { tempKey, tempFood, tempIngr, tempURL } = action.payload
-        food[tempKey] = { key: tempKey, food: tempFood, ingredients: tempIngr, url: tempURL }
-        console.log(food)
-        return food
+        const list = _.cloneDeep(state)
+        const { tempKey, tempTitle, tempContent, tempPhotoURL, tempLink } = action.payload
+        list[tempKey] = { key: tempKey, title: tempTitle, content: tempContent, url: tempPhotoURL, link: tempLink }
+        return list
             
       case DELETE_OBJ:
-        const newFood = [
+        const newList = [
                             ...state.slice(0, action.payload), 
                             ...state.slice(action.payload + 1)
                         ]
-        const resetIdxFood = newFood.map((item, index) => {
+        const resetIdxList = newList.map((item, index) => {
             item.key = index;
             return item;
         });
-        return newFood
+        return newList
             
       default:
         return state;

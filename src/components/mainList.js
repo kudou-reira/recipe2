@@ -5,7 +5,7 @@ import { actionCreators } from '../actions';
 
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
-import FoodProps from './foodProps';
+import EntertainProps from './entertainProps';
 import NewRecipe from './createNew';
 
 class Main extends Component {
@@ -30,13 +30,13 @@ class Main extends Component {
       <div>
         <header className="pageHeader">
             <div className="container flex-container">
-                <h3 className="recipeTitle">Recipe List!</h3>
+                <h3 className="recipeTitle">Anime/Manga To Watch List!</h3>
                     <button
                       type="button"
                       className="btn btn-info addButton"
                       onClick = {this.displayModal}
                     >
-                        Add Recipe
+                        Add Card
                     </button>
             </div>
         </header>
@@ -49,7 +49,7 @@ class Main extends Component {
                 transitionEnter={false}
                 transitionLeave={false}
               >
-                <FoodProps food={this.props.food} actions={this.props.actions} />
+                <EntertainProps list={this.props.list} actions={this.props.actions} />
               </ReactCSSTransitionGroup>
               {this.state.show
                 ? <NewRecipe
@@ -66,8 +66,8 @@ class Main extends Component {
   }
 }
 
-const mapStateToProps = ({ food }) => {
-    return { food };
+const mapStateToProps = ({ list }) => {
+    return { list };
 };
 
 const mapDispatchToProps = (dispatch) => {
