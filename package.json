@@ -1,9 +1,12 @@
 {
   "main": "index.js",
   "scripts": {
-    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "dev": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch",
+    "postinstall": "webpack -p",
+    "start": "node server.js",
+    "build": "webpack -p"
   },
   "author": "",
   "license": "ISC",
@@ -25,6 +28,7 @@
   "dependencies": {
     "babel-preset-stage-1": "^6.1.18",
     "bootstrap": "^3.3.7",
+    "express": "^4.15.3",
     "lockr": "^0.8.4",
     "lodash": "^3.10.1",
     "react": "^0.14.9",
