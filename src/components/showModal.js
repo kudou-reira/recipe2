@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Modal } from 'react-bootstrap';
+import { Button, Modal, Well, Collapse } from 'react-bootstrap';
 import YouTube from 'react-youtube';
 
 export default class ListItemModal extends Component {
@@ -13,7 +13,9 @@ export default class ListItemModal extends Component {
       tempContent: content,
       tempPhotoURL: url,
       tempLink: link,
-      tempItem: this.props.item
+      tempItem: this.props.item,
+      open: false,
+      open2: false
     }
 
     this.handleClick = this.handleClick.bind(this)
@@ -97,13 +99,25 @@ componentWillReceiveProps (nextProps) {
                           onChange={this.handleChange}
                         />
                        <label className="labelGap">Photo URL</label>
-                       <input type='text'
-                          className="form-control"
-                          placeholder="Add a Photo URL"
-                          value={this.state.tempPhotoURL}
-                          onChange={this.handleChange}
-                          name="tempPhotoURL"
-                        />
+                          <div>
+                            <Button bsStyle="primary" onClick={ ()=> this.setState({ open: !this.state.open })}>
+                              Change Photo URL
+                            </Button>
+                            <Collapse in={this.state.open}>
+                              <div>
+                                <Well className="labelGap">
+                                    <input type='text'
+                                      className="form-control"
+                                      placeholder="Add a Photo URL"
+                                      value={this.state.tempPhotoURL}
+                                      onChange={this.handleChange}
+                                      name="tempPhotoURL"
+                                    />
+                                </Well>
+                              </div>
+                            </Collapse>
+                          </div>
+                        
                        <label className="labelGap">Summary/Thoughts</label>
                        <textarea
                           rows="9"
@@ -116,13 +130,26 @@ componentWillReceiveProps (nextProps) {
                         <label className="labelGap">PV/OST/Music</label>
                         {this.youtubeVideo()}
                         <label className="labelGap">Video URL</label>
-                        <input type='text'
-                          className="form-control"
-                          placeholder="Add a Video URL (Youtube)"
-                          value={this.state.tempLink}
-                          onChange={this.handleChange}
-                          name="tempLink"
-                        />
+                        
+                              
+                        <div>
+                            <Button bsStyle="primary" onClick={ ()=> this.setState({ open2: !this.state.open2 })}>
+                              Change Video URL
+                            </Button>
+                            <Collapse in={this.state.open2}>
+                              <div>
+                                <Well className="labelGap">
+                                    <input type='text'
+                                      className="form-control"
+                                      placeholder="Add a Video URL (Youtube)"
+                                      value={this.state.tempLink}
+                                      onChange={this.handleChange}
+                                      name="tempLink"
+                                    />
+                                </Well>
+                              </div>
+                            </Collapse>
+                        </div>
                    </form>
               </Modal.Body>
              <Modal.Footer>

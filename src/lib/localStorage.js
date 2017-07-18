@@ -1,6 +1,7 @@
 export const loadState = () => {
     try {
         window.localStorage.clear();
+        //comment localStorage clear out in final build
         const serializedState = localStorage.getItem('state');
         if(serializedState === null) {
             return undefined;
