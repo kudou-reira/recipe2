@@ -44,7 +44,7 @@ render() {
       <div>
         <header className="pageHeader">
             <div className="container flex-container">
-                <h3 className="recipeTitle">Anime/Manga To Watch List(local storage added)</h3>
+                <h3 className="recipeTitle">Anime/Manga To Watch List (local storage added)</h3>
                     <button
                       type="button"
                       className="btn btn-info addButton"
