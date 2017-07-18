@@ -32,12 +32,19 @@
     "react-bootstrap": "^0.30.10",
     "react-css-stagger": "0.0.5",
     "react-dom": "^0.14.9",
+    "react-grid-gallery": "^0.4.0",
+    "react-image-gallery": "^0.8.3",
+    "react-image-slideshow": "^1.5.2",
+    "react-images": "^0.5.4",
+    "react-portal": "^3.1.0",
     "react-redux": "^4.4.8",
+    "react-responsive-carousel": "^3.1.24",
     "react-router": "^2.0.1",
     "react-staggered-animation": "0.0.2",
     "react-video": "^1.5.3",
     "react-youtube": "^7.4.0",
     "redux": "^3.6.0",
-    "redux-logger": "^3.0.6"
+    "redux-logger": "^3.0.6",
+    "tween.js": "^16.6.0"
   }
 }

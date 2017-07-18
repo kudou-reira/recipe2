@@ -24,7 +24,7 @@ export default class NewCard extends Component {
   saveCard() {
     const { tempTitle, tempContent, tempPhotoURL, tempLink } = this.state;
     this.props.actions.setNewObj({ tempTitle, tempContent, tempPhotoURL, tempLink });
-    this.props.hideModal()
+    this.props.hideModal();
   }
 
   render() {

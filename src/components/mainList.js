@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators } from '../actions';
+import Gallery from 'react-grid-gallery';
+
 
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
 import EntertainProps from './entertainProps';
 import NewCard from './createNew';
+
 
 class Main extends Component {
   constructor(props) {
@@ -14,17 +17,28 @@ class Main extends Component {
     this.state = {
         show: false
     };
-
+      
     this.displayModal = this.displayModal.bind(this);
   }
 
-  displayModal() {
-    this.setState({
-      show: !this.state.show
-    });
-  }
+    displayModal() {
+        this.setState({
+          show: !this.state.show
+        });
+    }
 
-  render() {
+render() {
+    
+    const imgDataHold = this.props.list.map((item, index) => {
+        return(
+            {
+                src: item.url,
+                caption: item.title,
+                thumbnail: item.url,
+                isSelected: false
+            }
+        );
+    });
     
     return (
       <div>
@@ -40,12 +54,15 @@ class Main extends Component {
                     </button>
             </div>
         </header>
+        <div className= "container flex-container shadowBox">
+           <Gallery images={imgDataHold}/>
+        </div>
         <div className="someDiv">
           <div className="container">
               <ReactCSSTransitionGroup 
                 transitionName="card"
                 transitionAppear={true}
-                transitionAppearTimeout={500}
+                transitionAppearTimeout={900}
                 transitionEnter={false}
                 transitionLeave={false}
               >
@@ -65,6 +82,7 @@ class Main extends Component {
     );
   }
 }
+
 
 const mapStateToProps = ({ list }) => {
     return { list };

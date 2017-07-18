@@ -42,7 +42,6 @@ componentWillReceiveProps (nextProps) {
     if(videoId != null) {
        return <div className = "embed-responsive embed-responsive-16by9">
                 <YouTube videoId = {videoId[1]} />
-                {console.log(videoId[1])}
               </div>;
     } else { 
         return <div className = "embed-responsive embed-responsive-16by9">

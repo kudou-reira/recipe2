@@ -328,5 +328,15 @@ img{
   transition: opacity 800ms ease-in;
 }
 
+.imgDisplay{
+    max-width: 700px;
+    max-height: 700px;
+}
+
+.shadowBox{
+    box-shadow: 6px 2px 8px 0 rgba(0,0,0,0.16), 1px 7px 10px 0 rgba(0,0,0,0.2);	
+    margin-bottom: 3%;
+    border-radius: 16px;
+}
 
 

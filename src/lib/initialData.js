@@ -27,11 +27,18 @@ export default [
     url: 'https://mangahelpers.com/forum/media/the-promised-neverland-cover-page-chapter-1.20669/full',
     link: 'https://www.youtube.com/watch?v=7YouYqXaxK8'
   },
-    {
+  {
     key: 4,
     title: 'New Game!!',
     content: "Having been inspired by the character designs of a particular video game when she was younger, Aoba Suzukaze, a high school graduate, begins working as a character designer at the game's developer, Eagle Jump. As she works on modelling and designing characters for games in development, she becomes acquainted with her fellow co-workers in the character design department, as well as those from across the company.",
     url: 'http://2.bp.blogspot.com/-fBRbsluT5xs/Vi4YiSOXuvI/AAAAAAAAAf0/OsGrXClOtBw/s1600/New-Game.png',
     link: 'https://www.youtube.com/watch?v=KgUfWuvoN4E'
+  },
+  {
+    key: 5,
+    title: 'ゲーマーズ！',
+    content: "This is a story that revolves around certain students and one hobby. Amano Keita is our lonely protagonist who has a passion for gaming and is friends with Uehara Tasuku, who is secretly a fellow gamer and is someone who believes his life is perfect. We also have Karen Tendou, the club president of the video games club and Chiaki Hoshinomori, who constantly bickers with Keita. This is a story filled with a non-stop sequence of comedy scenes and misunderstandings. Our chaotic romantic comedy now begins!",
+    url: 'http://www.animenewsnetwork.com/thumbnails/hotlink-max1000x1500/cms/daily-briefs/113837/gamers.jpg',
+    link: 'https://www.youtube.com/watch?v=jrpig1748II'
   }
 ]
